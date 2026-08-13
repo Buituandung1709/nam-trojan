@@ -2,7 +2,7 @@
 # Khi chạy code nó sẽ tạo ra Auto-start để tự khởi động
 ## Cách xóa
 
-Mở Registry Editor (regedit)
+Mở **Registry Editor** (regedit)
 
 Tìm đến đường dẫn sau: **Computer\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run**
 
