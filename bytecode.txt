@@ -22,10 +22,10 @@
               IMPORT_NAME              3 (requests)
               STORE_NAME               3 (requests)
 
-  6           LOAD_CONST               2 ('8876255842:AAF93POgQf1u-RbfzNNWo8boQK9cAvIKPFM')
+  6           LOAD_CONST               2 (null)
               STORE_NAME               4 (TOKEN)
 
-  7           LOAD_CONST               3 ('8604350172')
+  7           LOAD_CONST               3 (null)
               STORE_NAME               5 (CHAT_ID)
 
   8           LOAD_CONST               0 (0)
