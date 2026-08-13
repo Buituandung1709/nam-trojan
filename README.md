@@ -24,4 +24,4 @@ root
 > [!NOTE]
 > Code dịch ngược từ bytecode không thể đúng hoàn toàn 100% code gốc
 # Credits
-[extremecoders-re/pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor/)
+*[extremecoders-re/pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor/)
