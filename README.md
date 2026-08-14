@@ -29,5 +29,9 @@ root
 ```
 > [!NOTE]
 > Code dịch ngược từ bytecode không thể đúng hoàn toàn 100% code gốc
+# Virustotal
+[Trojan_test1_reconstructed.py](https://www.virustotal.com/gui/file/74817fb36cf2a2da76aafddd379cbb45f9a0d44560db639b5f036ddce5913ab0/detection)
+
+[test-copy.exe](https://www.virustotal.com/gui/file/38fa80082ac63b1dcdbd7d34146523922ef1524518606581bbe240d9ffb086d1/detection)
 # Credits
 *[extremecoders-re/pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor/)
