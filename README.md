@@ -12,7 +12,7 @@ Mở **Registry Editor** (regedit)
 
 Tìm đến đường dẫn sau: **Computer\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run**
 
-Loại bỏ **WindowsUpdater**
+Xóa **WindowsUpdater**
 
 Xong
 # Nội dung repo
