@@ -2,6 +2,12 @@
 # Khi chạy code nó sẽ tạo ra Auto-start để tự khởi động
 ## Cách xóa
 
+Mở **Task Manager** (chuột phải Taskbar hoặc Ctrl+Shift+Esc)
+
+Vào **Startup** tìm **win-updater.exe**
+
+Chuột phải chọn **Open file location** và xóa nó đi
+
 Mở **Registry Editor** (regedit)
 
 Tìm đến đường dẫn sau: **Computer\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run**
